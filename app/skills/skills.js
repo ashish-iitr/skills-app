@@ -64,17 +64,20 @@ angular.module('mySkills.skills', ['ngRoute','firebase'])
 		var data = $scope.users.$getRecord(key) || {};
 		if(angular.equals(data, {})){
 			rootRef.child('Users/' + key).set(obj).then(function(ref){
+				$scope.msg = "Your data added successfully";
+				$scope.showMsg = true;
+				$scope.$apply();
 				//hide form
 				$scope.addFormShow = false;
 			});
 		}
 		else{
 			rootRef.child('Users/'+ key + '/tech/' + $scope.selectedCategory).set($scope.result).then(function(ref){
-				//hide form
-				$scope.addFormShow = false;
 				$scope.msg = "Your data updated successfully";
 				$scope.showMsg = true;
 				$scope.$apply();
+				//hide form
+				$scope.addFormShow = false;
 			});
 		}
 		

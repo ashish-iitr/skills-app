@@ -64,7 +64,12 @@ input[type=text] {
 }
 
 .ratings-label {
-  margin-right: 20px;
+    margin-right: 20px;
+    float: left;
+    margin-left: -10px;
+}
+.radio+.radio {
+    margin-top: 10px;
 }
 .radio-label {
     padding: 5px;
@@ -102,6 +107,17 @@ input[type=text] {
   margin-top: 80px;
   margin-bottom: 80px;
 }
+.table>tbody>tr>td, 
+.table>tbody>tr>th, 
+.table>tfoot>tr>td, 
+.table>tfoot>tr>th, 
+.table>thead>tr>td, 
+.table>thead>tr>th {
+  vertical-align: middle;
+}
+.radio label{
+  padding-left: 35px;
+}
 
 @media screen and (max-width: 768px) {
   #mainContent{
@@ -115,7 +131,7 @@ input[type=text] {
     line-height: 1.5;
   }
   .report-btn {
-    padding-right: 0;
+    //padding-right: 0;
     padding-left: 0;
   }
   

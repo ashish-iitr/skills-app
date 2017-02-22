@@ -17,7 +17,7 @@
 				<!-- <h1>You selected: {{selectedCategory}} </h1> -->
 			</div>
 			<div class="col-xs-4 columns report-btn" ng-show="showBtn">
-				<a ng-click="showReport()" class="btn btn-info">Report</a>
+				<a ng-click="showReport()" class="btn btn-raised btn-info">Report</a>
 			</div>	
 		</div>
 		<div class="container skills-content" ng-if="selectedCategory"> 
@@ -31,9 +31,18 @@
 		    <tbody>
 		      <tr ng-repeat="skill in skills">
 		        <td>{{skill.$value}}</td>
-		        <td><label ng-repeat="rating in ratings" class="ratings-label">
+		        <td>
+					<span class="radio radio-info ratings-label" ng-repeat="rating in ratings"> 
+					    <label> 
+					        <input type="radio" ng-model="result[skill.$value]" name={{skill.$value}} ng-value="{{rating.$id}}">
+					        <span class="circle"></span>
+					        <span class="check"></span> 
+					        {{rating.$value}}
+					    </label> 
+					</span>
+		        	<!-- <label ng-repeat="rating in ratings" class="ratings-label">
 						<input ng-model="result[skill.$value]" type="radio" ng-value="{{rating.$id}}" name={{skill.$value}}><span class="radio-label">{{rating.$value}}</span>
-					</label>
+					</label> -->
 		        </td>
 		      </tr>
 		    </tbody>
@@ -63,10 +72,10 @@
 					<a ng-click="hide()" ng-show="addFormShow" class="btn btn-sm btn-fab btn-warning"><i class="material-icons">remove</i></a>
 				</span>
 				<input ng-model="newSkill" type="text" placeholder="Add new skill" required />
-				<a href="javascript:void(0)" class="btn btn-raised btn-success" ng-click="addNewSkill()">Add</a>
+				<a href="javascript:void(0)" class="btn btn-raised btn-info" ng-click="addNewSkill()">Add</a>
 			</div>
 			<div class="col-xs-12 col-sm-4  columns submit-btn text-right" ng-if="selectedCategory">
-				<button class="btn btn-info waves-effect waves-light" type="submit" name="action">Submit
+				<button class="btn btn-info btn-raised" type="submit" name="action">Submit
 		  		</button>
 			</div>
 		</div>
@@ -99,7 +108,17 @@
 				      </tr>
 				    </tbody>
 				</table>
-			</div> 
+			</div>
+			<div ng-show="!reportCategory" class="landing-content">
+				<div class="empty-message">
+					<h2>Select a category to see the report</h2>
+				</div>
+			</div>
+			<!-- <div ng-show="reportCategory" ng-repeat="(key, data) in userSkills" ng-if="key !== reportCategory" class="landing-content">
+				<div class="empty-message">
+					<h2>Not Available Yet !</h2>
+				</div>
+			</div> --> 
 		</div>
 	</div>
 </div>
