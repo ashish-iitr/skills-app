@@ -114,11 +114,11 @@
 					<h2>Select a category to see the report</h2>
 				</div>
 			</div>
-			<!-- <div ng-show="reportCategory" ng-repeat="(key, data) in userSkills" ng-if="key !== reportCategory" class="landing-content">
+			<div ng-show="reportCategory" ng-if="userSkills[reportCategory] === undefined" class="landing-content">
 				<div class="empty-message">
-					<h2>Not Available Yet !</h2>
+					<h2>Not Submitted Yet !</h2>
 				</div>
-			</div> --> 
+			</div> 
 		</div>
 	</div>
 </div>
