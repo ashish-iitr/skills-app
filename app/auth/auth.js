@@ -42,7 +42,7 @@ angular.module('mySkills.auth', ['ngRoute','firebase'])
 		
 		//var provider = new firebase.auth.GoogleAuthProvider();
 		auth.$signInWithPopup("google").then(function(result) {
-			console.log('loggedIn', result);
+			//console.log('loggedIn', result);
 		}).catch(function(error) {
 			console.log('error', error);
 		});
@@ -54,6 +54,7 @@ angular.module('mySkills.auth', ['ngRoute','firebase'])
 			// Sign-out successful.
 		}, function(error) {
 			// An error happened.
+			console.log('error', error);
 		});
 	}
 

@@ -51,7 +51,7 @@ angular.module('mySkills.skills', ['ngRoute','firebase'])
 	});
 	
 	$scope.updateSkills = function(result){
-		console.log("updating skills...");
+		//console.log("updating skills...");
 		//get id
 		var tempObj = {};
 		tempObj[$scope.selectedCategory] = $scope.result;
