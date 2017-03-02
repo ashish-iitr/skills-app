@@ -44,11 +44,14 @@ angular.module('mySkills.skills', ['ngRoute','firebase'])
 		var key = appUtils.getEmailKey(UserService.user.email);
 		var data = $scope.users.$getRecord(key) || {};
 		$scope.result = data && data.tech && data.tech[$scope.selectedCategory] || {};
-		$scope.showBtn = true;
+		if(data.tech){
+			$scope.showBtn = true;
+		}
+		
 	});
 	
 	$scope.updateSkills = function(result){
-		console.log("updating skills...");
+		//console.log("updating skills...");
 		//get id
 		var tempObj = {};
 		tempObj[$scope.selectedCategory] = $scope.result;
@@ -61,22 +64,27 @@ angular.module('mySkills.skills', ['ngRoute','firebase'])
 		var data = $scope.users.$getRecord(key) || {};
 		if(angular.equals(data, {})){
 			rootRef.child('Users/' + key).set(obj).then(function(ref){
+				$scope.msg = "Your data added successfully";
+				$scope.showMsg = true;
+				$scope.$apply();
 				//hide form
 				$scope.addFormShow = false;
 			});
 		}
 		else{
-			console.log("update");
 			rootRef.child('Users/'+ key + '/tech/' + $scope.selectedCategory).set($scope.result).then(function(ref){
+				$scope.msg = "Your data updated successfully";
+				$scope.showMsg = true;
+				$scope.$apply();
 				//hide form
 				$scope.addFormShow = false;
 			});
 		}
-		$scope.msg = "your data updated successfully";
-		$scope.showMsg = true;
+		
 	};
 
 	$scope.selectedSkills = function(){
+		$scope.showMsg = false;
 		$scope.msg = null;
 		$scope.addFormShow = false;
 		$scope.skills = $firebaseArray(rootRef.child('categoryList').child($scope.selectedCategory));
@@ -84,6 +92,7 @@ angular.module('mySkills.skills', ['ngRoute','firebase'])
 		var key = appUtils.getEmailKey(UserService.user.email);
 		var data = $scope.users.$getRecord(key) || {};
 		$scope.result = data && data.tech && data.tech[$scope.selectedCategory] || {};
+
 	}
 
 	$scope.addNewSkill = function(){
@@ -95,11 +104,15 @@ angular.module('mySkills.skills', ['ngRoute','firebase'])
 	}
 
 	$scope.showReport = function(){
+		$scope.showMsg = false;
 		$scope.feedData = true;
 		var key = appUtils.getEmailKey(UserService.user.email);
 		var data = $scope.users.$getRecord(key) || {};
 		$scope.userSkills = data.tech;
 		$scope.ratings = $firebaseArray(rootRef.child('Rating'));
+		$scope.reportCategory = $scope.selectedCategory;
 	}
+
+
 
 }]);
