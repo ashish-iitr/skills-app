@@ -4,7 +4,7 @@ angular.module('mySkills.auth', ['ngRoute','firebase'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/auth', {
-    templateUrl: 'auth/auth.html',
+    templateUrl: 'app/auth/auth.html',
     controller: 'AuthCtrl'
   });
 }])
