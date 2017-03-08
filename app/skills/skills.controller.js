@@ -2,13 +2,6 @@
 
 angular.module('mySkills.skills', ['ngRoute','firebase'])
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/skills', {
-    templateUrl: 'skills/skills.html',
-    controller: 'SkillsCtrl'
-  });
-}])
-
 //skills controller
 .controller('SkillsCtrl', ['$scope','$firebaseArray', 'UserService', '$location',
  function($scope,$firebaseArray, UserService, $location) {
