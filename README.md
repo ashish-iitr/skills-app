@@ -1,2 +1,3 @@
+# Live @ https://ashish-iitr.github.io/skills-app
 # Skills-app
-A small app using angular and firebase.
+An application using angular and firebase to add your technology skills and preview it.
